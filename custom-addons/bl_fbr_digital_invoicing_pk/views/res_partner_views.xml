@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_partner_form_bl_fbr" model="ir.ui.view">
+        <field name="name">res.partner.form.bl.fbr</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="FBR" name="bl_fbr_partner_tab">
+                    <group>
+                        <group>
+                            <field name="bl_fbr_registration_type"/>
+                            <field name="bl_fbr_registration_no"/>
+                            <field name="bl_fbr_buyer_type"/>
+                            <field name="bl_fbr_province"/>
+                        </group>
+                        <group>
+                            <field name="bl_fbr_ntn"/>
+                            <field name="bl_fbr_cnic"/>
+                            <field name="bl_fbr_strn"/>
+                            <field name="bl_fbr_exempt_from_validation" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

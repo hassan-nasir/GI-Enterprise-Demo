@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bl_fbr_config_manager,access.bl.fbr.config.manager,model_bl_fbr_config,group_bl_fbr_manager,1,1,1,1
+access_bl_fbr_log_user,access.bl.fbr.log.user,model_bl_fbr_log,group_bl_fbr_user,1,0,0,0
+access_bl_fbr_log_manager,access.bl.fbr.log.manager,model_bl_fbr_log,group_bl_fbr_manager,1,1,1,1
+access_bl_fbr_queue_user,access.bl.fbr.queue.user,model_bl_fbr_queue,group_bl_fbr_user,1,1,0,0
+access_bl_fbr_queue_manager,access.bl.fbr.queue.manager,model_bl_fbr_queue,group_bl_fbr_manager,1,1,1,1
+access_bl_fbr_error_code_user,access.bl.fbr.error.code.user,model_bl_fbr_error_code,group_bl_fbr_user,1,0,0,0
+access_bl_fbr_error_code_manager,access.bl.fbr.error.code.manager,model_bl_fbr_error_code,group_bl_fbr_manager,1,1,1,1
+access_bl_fbr_scenario_user,access.bl.fbr.scenario.user,model_bl_fbr_scenario,group_bl_fbr_user,1,0,0,0
+access_bl_fbr_scenario_manager,access.bl.fbr.scenario.manager,model_bl_fbr_scenario,group_bl_fbr_manager,1,1,1,1
+access_bl_fbr_readiness_wizard_user,access.bl.fbr.readiness.wizard.user,model_bl_fbr_readiness_wizard,group_bl_fbr_user,1,1,1,1
+access_bl_fbr_readiness_wizard_line_user,access.bl.fbr.readiness.wizard.line.user,model_bl_fbr_readiness_wizard_line,group_bl_fbr_user,1,1,1,1
+access_bl_fbr_bulk_submit_wizard_user,access.bl.fbr.bulk.submit.wizard.user,model_bl_fbr_bulk_submit_wizard,group_bl_fbr_manager,1,1,1,1

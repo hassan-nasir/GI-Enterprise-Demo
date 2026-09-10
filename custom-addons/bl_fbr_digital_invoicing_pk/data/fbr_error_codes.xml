@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="error_invalid_buyer_registration" model="bl.fbr.error.code">
+        <field name="code">INVALID_BUYER_REGISTRATION</field>
+        <field name="name">Invalid Buyer Registration</field>
+        <field name="friendly_message">Buyer registration details were rejected.</field>
+        <field name="suggested_fix">Verify buyer registration number, NTN, STRN, and province.</field>
+    </record>
+    <record id="error_missing_invoice_type" model="bl.fbr.error.code">
+        <field name="code">MISSING_INVOICE_TYPE</field>
+        <field name="name">Missing Invoice Type</field>
+        <field name="suggested_fix">Confirm invoice or credit note mapping.</field>
+    </record>
+    <record id="error_invalid_date_format" model="bl.fbr.error.code">
+        <field name="code">INVALID_DATE_FORMAT</field>
+        <field name="name">Invalid Date Format</field>
+        <field name="suggested_fix">Verify invoice date formatting for FBR.</field>
+    </record>
+    <record id="error_missing_buyer_name" model="bl.fbr.error.code">
+        <field name="code">MISSING_BUYER_NAME</field>
+        <field name="name">Missing Buyer Name</field>
+    </record>
+    <record id="error_missing_buyer_registration_type" model="bl.fbr.error.code">
+        <field name="code">MISSING_BUYER_REGISTRATION_TYPE</field>
+        <field name="name">Missing Buyer Registration Type</field>
+    </record>
+    <record id="error_missing_sale_type" model="bl.fbr.error.code">
+        <field name="code">MISSING_SALE_TYPE</field>
+        <field name="name">Missing Sale Type</field>
+    </record>
+    <record id="error_missing_hs_code" model="bl.fbr.error.code">
+        <field name="code">MISSING_HS_CODE</field>
+        <field name="name">Missing HS Code</field>
+        <field name="friendly_message">A product is missing its FBR HS code.</field>
+        <field name="suggested_fix">Open the product and enter the correct HS code.</field>
+    </record>
+    <record id="error_missing_rate" model="bl.fbr.error.code">
+        <field name="code">MISSING_RATE</field>
+        <field name="name">Missing Rate</field>
+    </record>
+    <record id="error_missing_quantity" model="bl.fbr.error.code">
+        <field name="code">MISSING_QUANTITY</field>
+        <field name="name">Missing Quantity</field>
+    </record>
+    <record id="error_missing_value" model="bl.fbr.error.code">
+        <field name="code">MISSING_VALUE</field>
+        <field name="name">Missing Value</field>
+    </record>
+    <record id="error_invalid_token" model="bl.fbr.error.code">
+        <field name="code">INVALID_TOKEN</field>
+        <field name="name">Invalid Token</field>
+        <field name="suggested_fix">Verify sandbox/production API token.</field>
+    </record>
+    <record id="error_api_timeout" model="bl.fbr.error.code">
+        <field name="code">API_TIMEOUT</field>
+        <field name="name">API Timeout</field>
+    </record>
+    <record id="error_duplicate_submission" model="bl.fbr.error.code">
+        <field name="code">DUPLICATE_SUBMISSION</field>
+        <field name="name">Duplicate Submission</field>
+    </record>
+    <record id="error_mock_validation" model="bl.fbr.error.code">
+        <field name="code">MOCK_VALIDATION_ERROR</field>
+        <field name="name">Mock Validation Error</field>
+    </record>
+    <record id="error_mock_hs_code_required" model="bl.fbr.error.code">
+        <field name="code">MOCK_HS_CODE_REQUIRED</field>
+        <field name="name">Mock HS Code Required</field>
+    </record>
+</odoo>

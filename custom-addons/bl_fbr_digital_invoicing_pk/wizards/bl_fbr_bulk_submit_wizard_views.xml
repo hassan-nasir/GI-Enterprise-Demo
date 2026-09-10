@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_bl_fbr_bulk_submit_wizard_form" model="ir.ui.view">
+        <field name="name">bl.fbr.bulk.submit.wizard.form</field>
+        <field name="model">bl.fbr.bulk.submit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="FBR Bulk Submit">
+                <group>
+                    <field name="move_ids" widget="many2many_tags"/>
+                    <field name="action_type" widget="radio"/>
+                    <field name="skip_errors"/>
+                    <field name="stop_on_first_error"/>
+                    <field name="result_html" nolabel="1" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_run" string="Run" type="object" class="btn-primary"/>
+                    <button string="Close" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bl_fbr_bulk_submit_wizard" model="ir.actions.act_window">
+        <field name="name">Bulk Submit</field>
+        <field name="res_model">bl.fbr.bulk.submit.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

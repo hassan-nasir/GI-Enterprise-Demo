@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_bl_fbr_readiness_wizard_form" model="ir.ui.view">
+        <field name="name">bl.fbr.readiness.wizard.form</field>
+        <field name="model">bl.fbr.readiness.wizard</field>
+        <field name="arch" type="xml">
+            <form string="FBR Readiness">
+                <group>
+                    <field name="move_ids" widget="many2many_tags"/>
+                    <field name="result_html" nolabel="1" readonly="1"/>
+                </group>
+                <field name="line_ids" readonly="1">
+                    <list>
+                        <field name="move_id"/>
+                        <field name="partner_id"/>
+                        <field name="invoice_date"/>
+                        <field name="fbr_status"/>
+                        <field name="blocking_issues"/>
+                        <button name="action_open_invoice" string="Open" type="object"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="action_validate" string="Check Selected" type="object" class="btn-primary"/>
+                    <button name="action_submit_ready" string="Submit Ready" type="object" class="btn-secondary"/>
+                    <button name="action_queue_ready" string="Queue Ready" type="object" class="btn-secondary"/>
+                    <button string="Close" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bl_fbr_readiness_wizard" model="ir.actions.act_window">
+        <field name="name">FBR Readiness Check</field>
+        <field name="res_model">bl.fbr.readiness.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

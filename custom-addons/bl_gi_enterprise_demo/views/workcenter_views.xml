@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Work Center Form View Extension -->
+    <record id="view_mrp_workcenter_form_gi_inherit" model="ir.ui.view">
+        <field name="name">mrp.workcenter.form.gi.inherit</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="before">
+                <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Work Center Kanban View Extension -->
+    <record id="mrp_workcenter_kanban_gi_inherit" model="ir.ui.view">
+        <field name="name">mrp.workcenter.kanban.gi.inherit</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='wc_stages']" position="before">
+                <field name="image_128" widget="image" invisible="not image_128" options="{'size': [50, 50], 'img_class': 'object-fit-cover rounded'}" class="float-start me-2"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

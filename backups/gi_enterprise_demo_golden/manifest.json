@@ -1,0 +1,7 @@
+{
+  "odoo_dump": "1",
+  "db_name": "gi_enterprise_demo",
+  "version": "19.0",
+  "major_version": "19.0",
+  "pg_version": "16"
+}

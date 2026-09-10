@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_move_form_bl_fbr" model="ir.ui.view">
+        <field name="name">account.move.form.bl.fbr</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="bl_fbr_can_submit" invisible="1"/>
+                <button name="action_bl_fbr_open_readiness_wizard" string="FBR Validate" type="object" class="btn-secondary" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_user" invisible="move_type not in ('out_invoice', 'out_refund') or state != 'posted'"/>
+                <button name="action_bl_fbr_submit" string="Submit to FBR" type="object" class="btn-primary" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_user" invisible="not bl_fbr_can_submit"/>
+                <button name="action_bl_fbr_queue" string="Queue for FBR" type="object" class="btn-secondary" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_user" invisible="not bl_fbr_can_submit"/>
+                <button name="action_bl_fbr_retry" string="Retry FBR" type="object" class="btn-secondary" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_user" invisible="move_type not in ('out_invoice', 'out_refund') or bl_fbr_status != 'failed'"/>
+                <button name="action_bl_fbr_reset_status" string="Reset FBR" type="object" class="btn-secondary" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager" invisible="move_type not in ('out_invoice', 'out_refund') or bl_fbr_status not in ('failed', 'validation_error', 'queued', 'submitted')"/>
+                <field name="bl_fbr_status" widget="statusbar" statusbar_visible="pending,ready,queued,submitted,failed,validation_error" invisible="move_type not in ('out_invoice', 'out_refund')"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_bl_fbr_view_logs" type="object" class="oe_stat_button" icon="fa-list" invisible="bl_fbr_log_count == 0">
+                    <field name="bl_fbr_log_count" widget="statinfo" string="FBR Logs"/>
+                </button>
+                <button name="action_bl_fbr_view_queue" type="object" class="oe_stat_button" icon="fa-refresh" invisible="bl_fbr_queue_count == 0">
+                    <field name="bl_fbr_queue_count" widget="statinfo" string="FBR Queue"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="FBR" name="bl_fbr_tab" invisible="move_type not in ('out_invoice', 'out_refund')">
+                    <group>
+                        <group>
+                            <field name="bl_fbr_status" readonly="1"/>
+                            <field name="bl_fbr_connection_mode_used" readonly="1"/>
+                            <field name="bl_fbr_invoice_number" readonly="1"/>
+                            <field name="bl_fbr_last_submission" readonly="1"/>
+                            <field name="bl_fbr_last_error_code" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="bl_fbr_qr_code_image" widget="image" readonly="1"/>
+                            <field name="bl_fbr_qr_data" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Validation / Error">
+                        <field name="bl_fbr_validation_summary" nolabel="1" readonly="1"/>
+                        <field name="bl_fbr_error" nolabel="1" readonly="1"/>
+                    </group>
+                    <notebook groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager">
+                        <page string="Payload">
+                            <field name="bl_fbr_payload_json" nolabel="1" readonly="1"/>
+                        </page>
+                        <page string="Response">
+                            <field name="bl_fbr_response_json" nolabel="1" readonly="1"/>
+                        </page>
+                    </notebook>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_bl_fbr_invoice_list" model="ir.ui.view">
+        <field name="name">account.move.bl.fbr.list</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <list string="FBR Invoices" default_order="invoice_date desc, id desc">
+                <field name="name"/>
+                <field name="invoice_date"/>
+                <field name="partner_id"/>
+                <field name="amount_total"/>
+                <field name="state"/>
+                <field name="bl_fbr_status"/>
+                <field name="bl_fbr_invoice_number"/>
+                <field name="bl_fbr_last_submission"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_filter_bl_fbr" model="ir.ui.view">
+        <field name="name">account.move.invoice.search.bl.fbr</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="FBR Submitted" name="bl_fbr_submitted" domain="[('bl_fbr_status', '=', 'submitted')]"/>
+                <filter string="FBR Failed" name="bl_fbr_failed" domain="[('bl_fbr_status', '=', 'failed')]"/>
+                <filter string="FBR Pending/Ready" name="bl_fbr_pending_ready" domain="[('bl_fbr_status', 'in', ('pending', 'ready', 'queued'))]"/>
+                <filter string="Missing FBR Data" name="bl_fbr_validation_error" domain="[('bl_fbr_status', '=', 'validation_error')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_bl_fbr_invoices" model="ir.actions.act_window">
+        <field name="name">FBR Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_bl_fbr_invoice_list"/>
+        <field name="domain">[("move_type", "=", "out_invoice")]</field>
+        <field name="context">{"default_move_type": "out_invoice"}</field>
+    </record>
+</odoo>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_bl_fbr" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.bl.fbr</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='account']" position="inside">
+                <block title="Pakistan FBR Digital Invoicing" name="bl_fbr_settings" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager">
+                    <setting string="FBR Integration" help="Enable FBR readiness checks and submission flows.">
+                        <field name="bl_fbr_enable_integration"/>
+                        <div class="content-group mt16">
+                            <div class="mb-3">
+                                <label for="bl_fbr_connection_mode" class="o_light_label"/>
+                                <field name="bl_fbr_connection_mode" class="w-100"/>
+                            </div>
+                            <div class="d-flex gap-2 align-items-center mb-2">
+                                <field name="bl_fbr_auto_submit_on_post"/>
+                                <label for="bl_fbr_auto_submit_on_post" class="o_light_label mb-0"/>
+                            </div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <field name="bl_fbr_lock_invoice_after_submission"/>
+                                <label for="bl_fbr_lock_invoice_after_submission" class="o_light_label mb-0"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Retry Queue">
+                        <field name="bl_fbr_enable_retry_queue"/>
+                        <div class="content-group mt16">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="bl_fbr_max_retry_attempts" class="o_light_label"/>
+                                    <field name="bl_fbr_max_retry_attempts" class="w-100"/>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="bl_fbr_retry_delay_minutes" class="o_light_label"/>
+                                    <field name="bl_fbr_retry_delay_minutes" class="w-100"/>
+                                </div>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Sandbox / Production API">
+                        <div class="content-group mt16">
+                            <div class="mb-3">
+                                <label for="bl_fbr_sandbox_base_url" class="o_light_label"/>
+                                <field name="bl_fbr_sandbox_base_url" class="w-100"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bl_fbr_production_base_url" class="o_light_label"/>
+                                <field name="bl_fbr_production_base_url" class="w-100"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bl_fbr_api_token" class="o_light_label"/>
+                                <field name="bl_fbr_api_token" password="True" class="w-100"/>
+                            </div>
+                            <div>
+                                <label for="bl_fbr_timeout_seconds" class="o_light_label"/>
+                                <field name="bl_fbr_timeout_seconds" class="w-100"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Seller Identity">
+                        <div class="content-group mt16">
+                            <div class="mb-3">
+                                <label for="bl_fbr_company_seller_registration_no" class="o_light_label"/>
+                                <field name="bl_fbr_company_seller_registration_no" class="w-100"/>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="bl_fbr_company_ntn" class="o_light_label"/>
+                                    <field name="bl_fbr_company_ntn" class="w-100"/>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="bl_fbr_company_strn" class="o_light_label"/>
+                                    <field name="bl_fbr_company_strn" class="w-100"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bl_fbr_seller_province" class="o_light_label"/>
+                                <field name="bl_fbr_seller_province" class="w-100"/>
+                            </div>
+                            <div>
+                                <label for="bl_fbr_seller_business_name_override" class="o_light_label"/>
+                                <field name="bl_fbr_seller_business_name_override" class="w-100"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_bl_fbr_scenario_list" model="ir.ui.view">
+        <field name="name">bl.fbr.scenario.list</field>
+        <field name="model">bl.fbr.scenario</field>
+        <field name="arch" type="xml">
+            <list string="FBR Scenarios">
+                <field name="active" column_invisible="True"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="default_sale_type"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_bl_fbr_scenario_form" model="ir.ui.view">
+        <field name="name">bl.fbr.scenario.form</field>
+        <field name="model">bl.fbr.scenario</field>
+        <field name="arch" type="xml">
+            <form string="FBR Scenario">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="active" widget="boolean_toggle"/>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="default_sale_type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" nolabel="1"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_bl_fbr_scenario" model="ir.actions.act_window">
+        <field name="name">FBR Scenarios</field>
+        <field name="res_model">bl.fbr.scenario</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

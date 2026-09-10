@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_form_view_bl_fbr" model="ir.ui.view">
+        <field name="name">product.template.form.bl.fbr</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="FBR" name="bl_fbr_product_tab">
+                    <group>
+                        <group>
+                            <field name="bl_fbr_item_code"/>
+                            <field name="bl_fbr_hs_code"/>
+                            <field name="bl_fbr_uom"/>
+                        </group>
+                        <group>
+                            <field name="bl_fbr_sale_type"/>
+                            <field name="bl_fbr_scenario_id"/>
+                            <field name="bl_fbr_scenario"/>
+                            <field name="bl_fbr_exempt_from_validation" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_bl_fbr" model="ir.ui.view">
+        <field name="name">product.template.search.bl.fbr</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Missing FBR HS Code" name="missing_bl_fbr_hs_code" domain="[('bl_fbr_hs_code', '=', False), ('sale_ok', '=', True)]"/>
+                <filter string="Missing FBR UOM" name="missing_bl_fbr_uom" domain="[('bl_fbr_uom', '=', False), ('sale_ok', '=', True)]"/>
+                <filter string="FBR Configured" name="bl_fbr_configured" domain="[('bl_fbr_hs_code', '!=', False), ('bl_fbr_uom', '!=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_company_form_bl_fbr" model="ir.ui.view">
+        <field name="name">res.company.form.bl.fbr</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="FBR" name="bl_fbr_company_tab">
+                    <group>
+                        <group>
+                            <field name="bl_fbr_seller_registration_no"/>
+                            <field name="bl_fbr_ntn"/>
+                            <field name="bl_fbr_strn"/>
+                            <field name="bl_fbr_seller_province"/>
+                        </group>
+                        <group>
+                            <field name="bl_fbr_business_name_override"/>
+                            <field name="bl_fbr_default_sale_type"/>
+                            <field name="bl_fbr_default_scenario_id"/>
+                        </group>
+                    </group>
+                    <group string="API Credentials" groups="base.group_system">
+                        <field name="bl_fbr_sandbox_base_url"/>
+                        <field name="bl_fbr_production_base_url"/>
+                        <field name="bl_fbr_api_token" password="True"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

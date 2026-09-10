@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_bl_fbr_root" name="FBR Digital Invoicing" parent="account.menu_finance" sequence="90" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_user"/>
+    <menuitem id="menu_bl_fbr_invoices" name="Invoices" parent="menu_bl_fbr_root" action="action_bl_fbr_invoices" sequence="10"/>
+    <menuitem id="menu_bl_fbr_readiness" name="Readiness Check" parent="menu_bl_fbr_root" action="action_bl_fbr_readiness_wizard" sequence="15"/>
+    <menuitem id="menu_bl_fbr_bulk_submit" name="Bulk Submit" parent="menu_bl_fbr_root" action="action_bl_fbr_bulk_submit_wizard" sequence="16" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager"/>
+    <menuitem id="menu_bl_fbr_logs" name="FBR Logs" parent="menu_bl_fbr_root" action="action_bl_fbr_log" sequence="20"/>
+    <menuitem id="menu_bl_fbr_queue" name="Retry Queue" parent="menu_bl_fbr_root" action="action_bl_fbr_queue" sequence="30"/>
+    <menuitem id="menu_bl_fbr_error_codes" name="Error Codes" parent="menu_bl_fbr_root" action="action_bl_fbr_error_code" sequence="40" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager"/>
+    <menuitem id="menu_bl_fbr_scenarios" name="Scenarios" parent="menu_bl_fbr_root" action="action_bl_fbr_scenario" sequence="50" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager"/>
+    <menuitem id="menu_bl_fbr_config" name="Configuration" parent="menu_bl_fbr_root" action="action_bl_fbr_config" sequence="90" groups="bl_fbr_digital_invoicing_pk.group_bl_fbr_manager"/>
+</odoo>

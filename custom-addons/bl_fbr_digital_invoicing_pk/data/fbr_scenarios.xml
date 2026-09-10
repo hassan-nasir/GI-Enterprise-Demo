@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="scenario_standard_taxable_sale" model="bl.fbr.scenario">
+        <field name="code">SN001</field>
+        <field name="name">Standard Taxable Sale</field>
+        <field name="default_sale_type">Standard taxable sale</field>
+        <field name="description">Demo default scenario for taxable B2B FMCG invoices.</field>
+    </record>
+    <record id="scenario_unregistered_buyer" model="bl.fbr.scenario">
+        <field name="code">SN002</field>
+        <field name="name">Unregistered Buyer Sale</field>
+        <field name="default_sale_type">Sale to unregistered buyer</field>
+        <field name="description">Demo scenario for unregistered/consumer buyers.</field>
+    </record>
+    <record id="scenario_credit_note" model="bl.fbr.scenario">
+        <field name="code">SN003</field>
+        <field name="name">Credit Note</field>
+        <field name="default_sale_type">Credit note / refund</field>
+        <field name="description">Demo scenario for customer refunds and credit notes.</field>
+    </record>
+</odoo>

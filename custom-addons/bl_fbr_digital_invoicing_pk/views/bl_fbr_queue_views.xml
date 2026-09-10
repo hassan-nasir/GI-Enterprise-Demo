@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_bl_fbr_queue_list" model="ir.ui.view">
+        <field name="name">bl.fbr.queue.list</field>
+        <field name="model">bl.fbr.queue</field>
+        <field name="arch" type="xml">
+            <list string="FBR Retry Queue" default_order="next_attempt_at asc">
+                <field name="name"/>
+                <field name="move_id"/>
+                <field name="company_id"/>
+                <field name="status"/>
+                <field name="attempt_count"/>
+                <field name="max_retry_attempts"/>
+                <field name="connection_mode"/>
+                <field name="next_attempt_at"/>
+                <field name="last_error"/>
+                <button name="action_retry" string="Retry" type="object" class="btn-primary" invisible="status == 'done'"/>
+                <button name="action_cancel" string="Cancel" type="object" class="btn-secondary" invisible="status in ('done', 'cancelled')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bl_fbr_queue_form" model="ir.ui.view">
+        <field name="name">bl.fbr.queue.form</field>
+        <field name="model">bl.fbr.queue</field>
+        <field name="arch" type="xml">
+            <form string="FBR Retry Queue">
+                <header>
+                    <button name="action_retry" string="Retry Now" type="object" class="btn-primary" invisible="status == 'done'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="move_id"/>
+                            <field name="company_id"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <field name="attempt_count"/>
+                            <field name="max_retry_attempts"/>
+                            <field name="connection_mode"/>
+                            <field name="next_attempt_at"/>
+                            <field name="processed_at"/>
+                            <field name="last_log_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="last_error_code"/>
+                        <field name="last_error" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bl_fbr_queue" model="ir.actions.act_window">
+        <field name="name">FBR Retry Queue</field>
+        <field name="res_model">bl.fbr.queue</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

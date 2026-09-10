@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_bl_fbr_log_list" model="ir.ui.view">
+        <field name="name">bl.fbr.log.list</field>
+        <field name="model">bl.fbr.log</field>
+        <field name="arch" type="xml">
+            <list string="FBR Logs" default_order="create_date desc">
+                <field name="create_date"/>
+                <field name="name"/>
+                <field name="move_id"/>
+                <field name="partner_id"/>
+                <field name="event_type"/>
+                <field name="status"/>
+                <field name="connection_mode"/>
+                <field name="http_status"/>
+                <field name="error_code"/>
+                <field name="duration_ms"/>
+                <field name="is_mock"/>
+                <field name="error_message"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bl_fbr_log_search" model="ir.ui.view">
+        <field name="name">bl.fbr.log.search</field>
+        <field name="model">bl.fbr.log</field>
+        <field name="arch" type="xml">
+            <search string="Search FBR Logs">
+                <field name="name"/>
+                <field name="move_id"/>
+                <field name="partner_id"/>
+                <field name="error_code"/>
+                <filter string="Success" name="success" domain="[('status', '=', 'success')]"/>
+                <filter string="Failed" name="failed" domain="[('status', 'in', ('failure', 'failed'))]"/>
+                <filter string="Mock" name="mock" domain="[('is_mock', '=', True)]"/>
+                <filter string="Sandbox" name="sandbox" domain="[('environment', '=', 'sandbox')]"/>
+                <filter string="Production" name="production" domain="[('environment', '=', 'production')]"/>
+                <filter string="Today" name="today" date="create_date"/>
+                <group>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="Invoice" name="group_invoice" context="{'group_by': 'move_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_bl_fbr_log_form" model="ir.ui.view">
+        <field name="name">bl.fbr.log.form</field>
+        <field name="model">bl.fbr.log</field>
+        <field name="arch" type="xml">
+            <form string="FBR Log">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="move_id"/>
+                            <field name="partner_id"/>
+                            <field name="company_id"/>
+                            <field name="move_name"/>
+                        </group>
+                        <group>
+                            <field name="event_type"/>
+                            <field name="status"/>
+                            <field name="connection_mode"/>
+                            <field name="environment"/>
+                            <field name="is_mock"/>
+                            <field name="http_status"/>
+                            <field name="duration_ms"/>
+                            <field name="endpoint"/>
+                            <field name="error_code"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Request">
+                            <field name="request_payload" nolabel="1"/>
+                        </page>
+                        <page string="Response">
+                            <field name="response_payload" nolabel="1"/>
+                        </page>
+                        <page string="Error">
+                            <field name="error_message" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bl_fbr_log" model="ir.actions.act_window">
+        <field name="name">FBR Logs</field>
+        <field name="res_model">bl.fbr.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_bl_fbr_log_search"/>
+    </record>
+</odoo>
